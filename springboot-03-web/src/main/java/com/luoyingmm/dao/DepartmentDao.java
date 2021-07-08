@@ -1,13 +1,15 @@
 package com.luoyingmm.dao;
 
 import com.luoyingmm.pojo.Department;
+import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+@Repository
 public class DepartmentDao {
-    static Map<Integer, Department> departments;
+    static Map<Integer, Department> departments = null;
     static {
         departments = new HashMap<>();
         departments.put(101,new Department(101,"教学部"));
@@ -21,7 +23,7 @@ public class DepartmentDao {
         return departments.values();
     }
 
-    public Department getDepartment(Integer id){
+    public Department getDepartmentById(Integer id){
         return departments.get(id);
     }
 }

@@ -30,7 +30,7 @@ public class EmployeeDao {
         if (employee.getId() == null){
             employee.setId(initId++);
         }
-        employee.setDepartment(departmentDao.getDepartmentById(employee.getId()));
+        employee.setDepartment(departmentDao.getDepartmentById(employee.getDepartment().getId()));
 
         employees.put(initId,employee);
     }
