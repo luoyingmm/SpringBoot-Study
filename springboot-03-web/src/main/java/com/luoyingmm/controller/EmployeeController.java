@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.Collection;
 
 @Controller
@@ -52,9 +53,17 @@ public class EmployeeController {
         return "emp/update";
     }
 
-    @RequestMapping("/updateEmp")
+    @PostMapping("/updateEmp")
     public String updateEmp(Employee employee){
         employeeDao.save(employee);
         return "redirect:/emps";
     }
+
+    @RequestMapping("/delemp/{id}")
+    public String deleteEmp(@PathVariable("id")Integer id){
+        employeeDao.deleteEmployee(id);
+        return "redirect:/emps";
+    }
+
+
 }
